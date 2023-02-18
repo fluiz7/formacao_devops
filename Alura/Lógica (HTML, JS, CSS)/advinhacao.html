@@ -1,0 +1,43 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Advinhe</button>
+
+<script>
+
+    function pulaLinha() {
+
+        document.write("<br>");
+    }
+
+    function mostra(frase) {
+
+        document.write(frase);
+        pulaLinha();
+    }
+
+    function sorteia(n) {
+        do {
+            var x = Math.round(Math.random()*n);
+        }
+        while(x > n);
+        return x
+    }
+
+    function comparar(){
+        if (input.value == numeroPensado){
+            alert("Você acertou! Parabéns!!")
+        } else {
+            alert("Você errou... tente novamente!")
+        }
+        input.value = "";
+        input.focus();
+    }
+    var input = document.querySelector("input");
+    var button = document.querySelector("button");
+    var numeroPensado = sorteia(10);
+    input.focus();
+    button.onclick = comparar;
+
+    
+</script>
