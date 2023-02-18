@@ -1,6 +1,6 @@
 from abc import ABCMeta
-import numpy as np
-
+from operator import attrgetter
+from functools import total_ordering
 
 class Conta(metaclass=ABCMeta):
     def __init__(self, codigo):
@@ -34,6 +34,7 @@ class ContaPoupanca(Conta):
         self.saldo -= 4
 
 
+@total_ordering
 class ContaSalario:
     def __init__(self, codigo):
         self._codigo = codigo
@@ -41,6 +42,11 @@ class ContaSalario:
 
     def deposita(self, valor):
         self._saldo += valor
+
+    def __lt__(self, other):
+        if self._saldo != other._saldo:
+            return self._saldo < other._saldo
+        return self._codigo < other._codigo
 
     def __eq__(self, other):
         if type(other) != ContaSalario:
@@ -56,27 +62,38 @@ class ContaMultiploSalario(ContaSalario):
 
 
 conta1 = ContaSalario(15)
-conta2 = ContaSalario(15)
+conta1.deposita(500)
+conta2 = ContaSalario(3300)
+conta2.deposita(500)
+conta3 = ContaSalario(78)
+conta3.deposita(500)
 
 idades = [14, 66, 48, 23, 47, 65, 35, 42, 15]
 
+contas = [conta1, conta2, conta3]
 
+for conta in sorted(contas, key=attrgetter("_saldo", "_codigo")):
+    print(conta)
 
+for conta in sorted(contas):
+    print(conta)
 
-#for i, idade in enumerate(idades):
+print(conta1 <= conta2)
+
+# for i, idade in enumerate(idades):
 #    print(i, idade)
 
-#for idade in range(len(idades)):
+# for idade in range(len(idades)):
 #    print(idade, idades[idade])
 
-#for conta in contas:
+# for conta in contas:
 #    conta.deposita(500)
 #    print(conta)
 #    conta.passa_o_mes()
 #    print(conta)
 
 
-#def visualizar(lista=None):
+# def visualizar(lista=None):
 #    if lista is None:
 #        lista = list()
 #
