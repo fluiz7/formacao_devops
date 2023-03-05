@@ -1,0 +1,24 @@
+Teste manual é realizado por uma pessoa e, por isso, é mais lentoe também sujeito a falhas ou incoveniente.
+
+O teste automatizado é mais seguro e possui um feedback muito mais rápido.
+
+Tipos:
+
+Teste unitário pega a menor parte de uma aplicação e testa justamente aquela menor parte.
+
+Teste de Integração é responsável por unir e testar a união das menores partes para analisar seu comportamento.
+
+Teste de ponta a ponta (end to end - E2E) testa toda a aplicação, todo o processo, como se fosse um usuário, portanto é mais complexo e acaba por ser muito mais abrangente.
+
+É boa prática que o arquivo de testes tenha classes para separar trechos de código que serão testados e, além dos métodos das classes precisarem começar com test_ no pytest (assim como o arquivo), é fundamental que o restante do nome seja escrito da maneira mais verbosa possível.
+
+
+Given-When-Then
+
+Dado um contexto, é quando temos a ação e então um desfecho
+
+Arrange-Act-Assert
+
+Arrange: A tradução não literal seria algo como organizar. A organização, nesse caso, seria focada nos passos preliminares necessários para montar o contexto inicial do teste;
+Act: A tradução não literal seria algo como agir. Nesse caso seria a ação que parte dos passos organizados na primeira etapa e leva ao que vamos averiguar no final;
+Assert: A tradução não literal seria algo como averiguar. Nesse caso, averiguarmos que o desfecho trazido pela ação é realmente aquele que esperamos.
